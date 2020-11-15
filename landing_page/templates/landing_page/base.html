@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Metropolitan Magazine</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;700;800&family=Montserrat:wght@300;400;500&family=Rubik:wght@300;400;500;600;700&family=Staatliches&display=swap" rel="stylesheet">
+</head>
+<body>
+	<!-- Main Navigation -->
+	<div class = 'main-header'>
+		<header>
+			<a href="#">
+				<div class='header-logo'>
+					<a href="#" class='logo'><img src="{% static 'landing_page/logo.png' %}"></a>
+					<a href="#" class='logo-name'>Metropolitan <br>Magazine</a>
+				</div>
+			</a>
+			<nav class='navigation-bar'>
+				<div class='white-bar'>
+					<a href="#">Home</a>
+					<a href="#">News</a>
+					<a href="#">About</a>
+					<a href="#">Contact</a>	
+				</div>
+			</nav>
+		</header>
+	</div>
+	{% block content%}{% endblock content %}
+</body>
+</html>

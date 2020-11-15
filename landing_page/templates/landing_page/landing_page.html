@@ -1,0 +1,66 @@
+{% extends "landing_page/base.html" %}
+{% load static %}
+{% block content %}
+	<div class='landing-page-wrapper'>
+		<div class="main-landing-text">
+			<h1>Lorem Ipsum Dolor Sit Ameti Mi Sit Amet Mauris Commodo Quis Imperdiet Imperdiet Sed Euismod Nisi Porta</h1>
+		</div>
+		<div class="submain-landing-text">
+			<h2>Lorem Ipsum Dolor Sit Ameti<br>Mi Sit Amet Mauris Commodo Quis Imperdiet<br>Imperdiet Sed Euismod Nisi Porta</h2>
+		</div>
+		<a class="call-to-action" href="{% url 'news' %}">
+			Lorem Ipsum
+		</a>
+	</div>
+	<div class='supported-feeds-wrapper'>
+		<h1 class='supported-feeds-title'>Lorem Ipsum</h1>
+		<h2 class='supported-feeds-subtitle'>Lorem Ipsum</h2>
+		<div class='supported-feeds-grid'>
+			{% for publisher in publishers %}
+				<div class="card-wrapper">
+					<div class='title-card'>
+						<h2 class="pub-landing">{{ publisher.publisher }}</h2>
+					</div>
+					<div class="feed-card-wrapper">
+						<div class="feed-card-categories">
+							{% for category in categories %}
+								<h3 class='feed-category'>{{ category.category }}</h3>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="feature-list-wrapper">
+		<div class="feature-grid-wrapper">
+			<div class='feature-box1'>
+				<img class='feature-image' src="{% static 'landing_page/News2.png' %}">
+				<h2 class='feature-title'>The Latest News</h2>
+				<p class="para-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque rutrum eget dolor sit amet pharetra. </p>
+			</div>
+			<div class='feature-box2'>
+				<img class='feature-image' src="{% static 'landing_page/News2.png' %}">
+				<h2 class='feature-title'>The World at Your Fingertips</h2>
+				<p class="para-desc">Lorem ipsum dolor sit amet, consecbgbovbtetur adipiscing elit. Pellentesque rutrum eget dolor sit amet pharetra. </p>
+			</div>
+			<div class='feature-box3'>
+				<img class='feature-image' src="{% static 'landing_page/News2.png' %}">
+				<h2 class='feature-title'>Save Time and Stay Up-to-date</h2>
+				<p class="para-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque rutrum eget dolor sit amet pharetra. </p>
+			</div>
+		</div>
+	</div>
+
+{% endblock content %}
+
+<div class="landing-image-row">
+			<img src="{% static 'landing_page/News2.png' %}">
+			<img src="{% static 'landing_page/News2.png' %}">
+			<img src="{% static 'landing_page/News2.png' %}">
+		</div>
+		<div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque rutrum eget dolor sit amet pharetra. </p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque rutrum eget dolor sit amet pharetra. </p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque rutrum eget dolor sit amet pharetra. </p>
+		</div>

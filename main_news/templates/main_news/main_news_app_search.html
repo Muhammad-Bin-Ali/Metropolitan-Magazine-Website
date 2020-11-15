@@ -1,0 +1,26 @@
+{% extends "landing_page/base.html" %}
+{% load static %}
+{% block content %}
+	<div class='news-grid-wrapper'>
+		{%for post in posts%}
+			<div class='news-card'>
+				<img class='news-image' src="{{ post.image_url }}">
+				<div class='category'>
+					<h2 >{{ post.category }}</h2>
+				</div>
+				<div class='publisher'>
+					<h2>{{ post.publisher }}</h2>
+				</div>
+				<div class='card-content-wrapper'>
+					<h2 class="date">{{ post.date_published|date:"F d Y H:i e" }}</h2>
+					<h2 class="headline">{{ post.headline }}</h2>
+					<!-- <a href="{{post.link}}">Click here for the link</a> -->
+					<p class="description">{{ post.description }}</p>
+					<a href="{{ post.link }}"><img class='play-arrow' src="{% static 'main_news/play-arrow.png' %}"></a>
+					<a class='hyper-text' href="{{ post.link }}">Find out more</a>
+				</div>
+			</div>
+		{%endfor%}
+	</div>
+
+{% endblock content %}

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>news app</title>
+</head>
+<body>
+	<h1>YOU MADE IT!</h1>
+	{% for category in categories %}
+		<a href = "{% url 'news-publisher-category' chosen_pub category.category %}">{{ category.category }}<a>
+	{% endfor %}
+</body>
+</html>
