@@ -1,5 +1,0 @@
-1. Add model for feed
-2. Add model for profile
-3. Add Google Authentication
-4. Rebuild Feedreader function
-5. Add ability to subscribe to specific feeds
