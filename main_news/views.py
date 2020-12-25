@@ -10,11 +10,11 @@ from .rss_url_validator import validate_url
 
 
 class News(ListView):
+	# paginate_by = 10
 	model = NewsPost
 	template_name = 'main_news/main_news_app.html'
 	context_object_name = 'posts' 
 	ordering = ['-date_published']
-	paginate_by = 10
 
 	# def get_queryset(self):
 	# 	print(self.request.POST)
