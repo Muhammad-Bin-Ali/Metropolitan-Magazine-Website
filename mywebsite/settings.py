@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main_news.apps.MainNewsConfig',
     'huey.contrib.djhuey',
-    'django_filters',
     'landing_page.apps.LandingPageConfig',
     'django.contrib.sites',
     'allauth',
@@ -48,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'usersbackend.apps.UsersbackendConfig',
+    'read_later.apps.ReadLaterConfig',
 ]
 
 MIDDLEWARE = [
@@ -85,9 +85,10 @@ WSGI_APPLICATION = 'mywebsite.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
+    # 'default_one': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
+    # },
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'news_database',
@@ -98,7 +99,7 @@ DATABASES = {
     }
 }
 
-   
+DATA_UPLOAD_MAX_NUMBER_FIELDS  = 10240   
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

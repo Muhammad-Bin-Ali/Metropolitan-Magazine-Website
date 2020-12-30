@@ -1,33 +1,39 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>Metropolitan Magazine</title>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;700;800&family=Montserrat:wght@300;400;500&family=Rubik:wght@300;400;500;600;700&family=Staatliches&display=swap" rel="stylesheet">
-</head>
-<body>
-	<!-- Main Navigation -->
-	<div class = 'main-header'>
-		<header>
-			<a href="#">
-				<div class='header-logo'>
-					<a href="#" class='logo'><img src="{% static 'landing_page/logo.png' %}"></a>
-					<a href="#" class='logo-name'>Metropolitan <br>Magazine</a>
-				</div>
-			</a>
-			<nav class='navigation-bar'>
-				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">News</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact</a></li>
-				</ul>			
-			</nav>
-		</header>
-	</div>
-	{% block content%}{% endblock content %}
-</body>
+	<head>
+		<title>Metropolitan Magazine</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+		<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;700;800&family=Montserrat:wght@300;400;500&family=Rubik:wght@300;400;500;600;700&family=Staatliches&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<!-- Main Navigation -->
+		<div class = 'main-header'>
+			<header>
+				<a href="#">
+					<div class='header-logo'>
+						<a href="#" class='logo'><img src="{% static 'landing_page/logo.png' %}"></a>
+						<a href="#" class='logo-name'>Metropolitan <br>Magazine</a>
+					</div>
+				</a>
+				<nav class='navigation-bar'>
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">News</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Contact</a></li>
+						
+					</ul>			
+				</nav>
+			</header>
+		</div>
+		{% block content %}{% endblock content %}
+
+
+
+		<script type="text/javascript" src="{% static 'jquery-3.5.1.min.js' %}"></script>
+		{% block java %}{% endblock java %}
+	</body>
 </html>

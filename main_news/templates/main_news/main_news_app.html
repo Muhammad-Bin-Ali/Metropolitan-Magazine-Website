@@ -3,6 +3,8 @@
 {% block content %}
 	<div class='main_app_wrapper'>
 
+		
+
 		<form action="{% url 'search-results' %}" method="get">
 			<input class='search' type="text" name="q" placeholder="Search for specific headlines & topics">
 		</form>
@@ -12,30 +14,59 @@
 			{% csrf_token %}
 			{{ form.as_p }}
 			<button type="submit" >Submit</button>
-		</form>
- -->
+		</form> -->
 
+		 
 		<div class='news-grid-wrapper'>
 			<div class='subheader'>
 				<h1 class='news-page-title'>Your Feed</h1>
 				<h1 class=numb-items>{{ posts|length }}</h1>
 				<hr class='line-1'>
 			</div>
-			{%for post in posts%}
-				<div class='news-card'>
-					<img class='news-image' src="{{ post.image_url }}">
-					<div class='card-content-wrapper'>
-						<h2 class="headline">{{ post.headline }}</h2>
-						<hr class='line-2'>
-						<h2 class="date">{{ post.date_published|date:"F d Y H:i e" }}</h2>
-						<h2 class='category'> {{post.category}} </h2>
-						<p class="description">{{ post.description }}</p>
+				{%for post in posts%}
+					<div class='news-card'>
+						<img class='news-image' src="{{ post.image_url }}">
+						<div class='card-content-wrapper'>
+							<h2 class="headline">{{ post.headline }}</h2>
+							<hr class='line-2'>
+							<button type='button' name='test' value="{{ post.id }}" class='read-later-button'>ADD TO READ LATER</button>
+							<h2 class="date">{{ post.date_published|date:"F d Y H:i e" }}</h2>
+							<h2 class='category'> {{post.category}} </h2>
+							<p class="description">{{ post.description }}</p>
+						</div>
 					</div>
-				</div>
-			{%endfor%}
+				{%endfor%}
 		</div>
 	</div>
-	
-
-
 {% endblock content %}
+
+{% block java %}
+	<script type='text/javascript'>
+		$.ajaxSetup({
+			headers: { "X-CSRFToken": '{{csrf_token}}' }
+		});
+
+		$(document).ready(function(){ 
+			$(".read-later-button").click(function(){
+				var id = $(this).attr("value");
+				var url = "{% url 'ajax-read-later' %}";
+				$.ajax({
+					type: 'POST',
+					url: url, 
+					data: {
+						user: '{{ request.user }}',
+						post: id,
+						csrfmiddlewaretoken: '{{ csrf_token }}'
+					},
+					success: function(post_id){
+						console.log(post_id)
+					},
+					error: function(response){
+						console.log(response.error)
+					}
+				})
+			})
+		})
+	</script>
+{% endblock java %}
+

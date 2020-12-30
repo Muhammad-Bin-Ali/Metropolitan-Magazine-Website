@@ -3,9 +3,9 @@ from django.views.generic import ListView, FormView
 from .models import NewsPost
 from .parse_function import parseRSSfeeds
 from django.contrib.postgres.search import SearchVector
-from newscatcher import Newscatcher
 from django.http import HttpResponseRedirect
 from .forms import AddFeedForm
+from read_later.forms import Populate_ReadLater
 from .rss_url_validator import validate_url
 
 
@@ -16,14 +16,11 @@ class News(ListView):
 	context_object_name = 'posts' 
 	ordering = ['-date_published']
 
-	# def get_queryset(self):
-	# 	print(self.request.POST)
-	# 	return 
-
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
 		context['posts'] = NewsPost.objects.all()
-		context['form'] = AddFeedForm()
+		# context['form'] = AddFeedForm()
+		# context['form'] = Populate_ReadLater()
 		return context
 
 class AddUrlToFeed(FormView):
@@ -33,7 +30,6 @@ class AddUrlToFeed(FormView):
 	
 	def form_valid(self, form):
 		print(self.request.POST.get('feed_url'))
-
 		return super().form_valid(form)
 
 
@@ -84,7 +80,7 @@ class SearchView(ListView):
 	# #  	return context
 
 
-		#post__ = parseRSSfeeds()
+	# post__ = parseRSSfeeds()
 	# for item in post__:
 	# 	item = NewsPost(
 	# 		headline = item['headline'], 
