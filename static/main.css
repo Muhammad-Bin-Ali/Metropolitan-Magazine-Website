@@ -337,11 +337,12 @@ a {
 }
 
 .news-card {
-	background-color: #FCFCFC;
+	/* background-color: #FCFCFC; */
+	background-color: #fff;
 	width: auto;
 	height: 10em;
 	border-radius: 0.3em;
-	box-shadow: 0px 0.2em 0.7em rgba(0,0,0,0.14);
+	/* box-shadow: 0px 0.2em 0.7em rgba(0,0,0,0.14); */
 	margin-bottom: 1.5em;
 }
 
@@ -349,7 +350,7 @@ a {
 	position: absolute;	
 	height: 10em;
 	max-width: 16.5em;
-	border-radius: 0.3em 0em 0em 0.3em;
+	border-radius: 0.3em 0.3em 0.3em 0.3em;
 }
 
 .publisher h2, .category h2 {
@@ -393,8 +394,8 @@ a {
 	clear: both;
 	display: block;
 	width: auto;               
-	background-color: #686868;
-	height: 0.09em;
+	background-color:#ECECEC;
+	height: 0.13em;
 	margin-bottom: 0.5em;
 }
 
@@ -475,7 +476,18 @@ a {
 	color: #BFBFBF;
 }
 
-.temp {
-	width: 10em;
-	height:  3em;
+.read-later-button{
+	background-color: #fff;
+	position: absolute;
+	right: 0em;
+	top: 1em
+}
+
+.read-later-icon{	
+	width: 80%;
+	height: auto;
+}
+
+.read-later-icon:hover > path{
+	fill:#616161;
 }

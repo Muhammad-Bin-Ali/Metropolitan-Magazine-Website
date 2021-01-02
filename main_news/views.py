@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from .forms import AddFeedForm
 from read_later.forms import Populate_ReadLater
 from .rss_url_validator import validate_url
+from read_later.models import ReadLater
 
 
 class News(ListView):
@@ -19,6 +20,7 @@ class News(ListView):
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
 		context['posts'] = NewsPost.objects.all()
+		context['read_later'] = ReadLater.objects.filter(user_id = self.request.user.id).values_list('post', flat=True).distinct().all()
 		# context['form'] = AddFeedForm()
 		# context['form'] = Populate_ReadLater()
 		return context

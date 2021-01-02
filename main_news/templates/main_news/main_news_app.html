@@ -15,7 +15,7 @@
 			{{ form.as_p }}
 			<button type="submit" >Submit</button>
 		</form> -->
-
+		
 		 
 		<div class='news-grid-wrapper'>
 			<div class='subheader'>
@@ -28,8 +28,14 @@
 						<img class='news-image' src="{{ post.image_url }}">
 						<div class='card-content-wrapper'>
 							<h2 class="headline">{{ post.headline }}</h2>
+							<button type='button' name='test' value="{{ post.id }}" class='read-later-button'>
+								{% if post.id in read_later %}
+										<svg id="{{post.id}}" class='read-later-icon' xmlns="http://www.w3.org/2000/svg" width="18.201" height="31.992" viewBox="0 0 18.201 31.992"><path id="remove-read-later" data-name="Path 579" d="M6137.414,3946.636v31.992l8.775-7.078,9.426,7.078v-31.992Z" transform="translate(-6137.414 -3946.636)" fill="#403735"/></svg>
+								{% else %}
+										<svg id='{{post.id}}' class='read-later-icon' xmlns="http://www.w3.org/2000/svg" width="18.203" height="31.994" viewBox="0 0 18.203 31.994"><path id="add-read-later" data-name="Subtraction 8" d="M-6110-4789.007V-4821h18.2v31.991l-9.426-7.077-8.775,7.079Zm8.867-9.955h0l7.374,5.574v-25.2H-6108v25.2l6.864-5.574Z" transform="translate(6110.002 4821.001)" fill="#B1B0B0"/></svg>
+								{% endif %}
+							</button>
 							<hr class='line-2'>
-							<button type='button' name='test' value="{{ post.id }}" class='read-later-button'>ADD TO READ LATER</button>
 							<h2 class="date">{{ post.date_published|date:"F d Y H:i e" }}</h2>
 							<h2 class='category'> {{post.category}} </h2>
 							<p class="description">{{ post.description }}</p>
@@ -58,8 +64,17 @@
 						post: id,
 						csrfmiddlewaretoken: '{{ csrf_token }}'
 					},
-					success: function(post_id){
-						console.log(post_id)
+					success: function(response){
+						let post_id = '#' + response.post_id;
+						let add_path_reference_html = '<path id="add-read-later" data-name="Subtraction 8" d="M-6110-4789.007V-4821h18.2v31.991l-9.426-7.077-8.775,7.079Zm8.867-9.955h0l7.374,5.574v-25.2H-6108v25.2l6.864-5.574Z" transform="translate(6110.002 4821.001)" fill="#B1B0B0"></path>'
+						let add_icon = `<svg class="read-later-icon" id=${response.post_id} xmlns="http://www.w3.org/2000/svg" width="18.203" height="31.994" viewBox="0 0 18.203 31.994"><path id="add-read-later" data-name="Subtraction 8" d="M-6110-4789.007V-4821h18.2v31.991l-9.426-7.077-8.775,7.079Zm8.867-9.955h0l7.374,5.574v-25.2H-6108v25.2l6.864-5.574Z" transform="translate(6110.002 4821.001)" fill="#B1B0B0"/></svg>`;
+						let remove_icon = `<svg class="read-later-icon" id=${response.post_id} xmlns="http://www.w3.org/2000/svg" width="18.201" height="31.992" viewBox="0 0 18.201 31.992"><path id="remove-read-later" data-name="Path 579" d="M6137.414,3946.636v31.992l8.775-7.078,9.426,7.078v-31.992Z" transform="translate(-6137.414 -3946.636)" fill="#403735"/></svg>`;
+						if ($(post_id).html() === add_path_reference_html) {
+							$(post_id).replaceWith(remove_icon);
+						}
+						else {
+							$(post_id).replaceWith(add_icon);
+						}
 					},
 					error: function(response){
 						console.log(response.error)
@@ -68,5 +83,7 @@
 			})
 		})
 	</script>
+<!-- -->
+
 {% endblock java %}
 

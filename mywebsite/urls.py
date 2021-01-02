@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from landing_page import views as landing_page_views
 from django.views.generic import TemplateView
-from read_later.views import ReadLater, ReadLater_Ajax
+from read_later.views import ReadLaterView, ReadLater_Ajax
 
 
 urlpatterns = [
@@ -26,6 +26,6 @@ urlpatterns = [
     path('', landing_page_views.templanding, name = 'landing-page'),
     path('accounts/', include('allauth.urls')),
     path('login/', TemplateView.as_view(template_name='usersbackend/index.html')),
-    # path('<str:username>/read-later/', ReadLater.as_view(), name = 'read-later-page'),
-    path('ajax/read-later/', ReadLater_Ajax.as_view(), name='ajax-read-later')
+    path('<str:username>/read-later/', ReadLaterView.as_view(), name = 'read-later-page'),
+    path('read-later/ajax', ReadLater_Ajax.as_view(), name='ajax-read-later')
 ]

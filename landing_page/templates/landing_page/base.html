@@ -24,7 +24,11 @@
 						<li><a href="#">News</a></li>
 						<li><a href="#">About</a></li>
 						<li><a href="#">Contact</a></li>
-						
+						{% if user.is_authenticated %}
+							<li><a href="{% url 'read-later-page' user.username %}">Read Later</a></li>
+						{% else %}
+							<li><a href="{% url 'read-later-page' 'user' %}">Read Later</a></li>
+						{% endif %}
 					</ul>			
 				</nav>
 			</header>

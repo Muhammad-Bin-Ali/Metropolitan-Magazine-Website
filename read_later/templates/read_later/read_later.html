@@ -1,5 +1,25 @@
 {% extends "landing_page/base.html" %}
 {% load static %}
 {% block content %}
-
+    <div class='main_app_wrapper'>
+        <div class='news-grid-wrapper'>
+            <div class='subheader'>
+                <h1 class='news-page-title'>Read Later</h1>
+                <h1 class=numb-items>{{ read_later_posts|length }}</h1>
+                <hr class='line-1'>
+            </div>
+                {%for post in read_later_posts%}
+                    <div class='news-card'>
+                        <img class='news-image' src="{{ post.image_url }}">
+                        <div class='card-content-wrapper'>
+                            <h2 class="headline">{{ post.headline }}</h2>
+                            <hr class='line-2'>
+                            <h2 class="date">{{ post.date_published|date:"F d Y H:i e" }}</h2>
+                            <h2 class='category'> {{post.category}} </h2>
+                            <p class="description">{{ post.description }}</p>
+                        </div>
+                    </div>
+                {%endfor%}
+        </div>
+    </div>
 {% endblock content %}
